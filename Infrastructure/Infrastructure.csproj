@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\EFCore\Contexts\" />
+    <Folder Include="Database\EFCore\Mapping\" />
+    <Folder Include="Database\EFCore\Repositories\" />
+  </ItemGroup>
+
 </Project>
