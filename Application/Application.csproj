@@ -13,13 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Abstractions\Services\" />
-    <Folder Include="Abstractions\Repositories\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Constants\" />
+    <Folder Include="Managers\" />
     <Folder Include="Queries\" />
     <Folder Include="Commands\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>

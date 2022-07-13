@@ -7,6 +7,5 @@ namespace CleanArchitecture.Infrastructure.Database.EFCore.Repositories
 {
     public class StudentRepository : EFCoreBaseRepository<Student, ProjectContext>, IStudentRepository
     {
-
     }
 }

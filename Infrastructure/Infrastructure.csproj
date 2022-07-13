@@ -7,9 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Database\EFCore\Contexts\" />
-    <Folder Include="Database\EFCore\Mapping\" />
-    <Folder Include="Database\EFCore\Repositories\" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
 </Project>

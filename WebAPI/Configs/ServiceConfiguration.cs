@@ -1,6 +1,12 @@
-﻿using CleanArchitecture.Domain.Validations;
+﻿using Application.Abstractions.Repositories;
+using Application.Services;
+using CleanArchitecture.Application.Abstractions.Services;
+using CleanArchitecture.Domain.Validations;
+using CleanArchitecture.Infrastructure.Database.EFCore.Contexts;
+using CleanArchitecture.Infrastructure.Database.EFCore.Repositories;
 using CleanArhitecture.Api.Filters;
 using FluentValidation.AspNetCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
@@ -40,9 +46,10 @@ namespace CleanArhitecture.Api.Configs
         public static void AddDependencies(this IServiceCollection services)
         {
             //Repos
-
+            services.AddScoped<IStudentRepository, StudentRepository>();
 
             //Services
+            services.AddScoped<IStudentService, StudentService>();
 
 
             //Intl - Tools

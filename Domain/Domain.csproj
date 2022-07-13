@@ -11,4 +11,9 @@
     <Folder Include="Exceptions\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+  </ItemGroup>
+
 </Project>
