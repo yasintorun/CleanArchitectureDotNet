@@ -16,13 +16,13 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Constants\" />
     <Folder Include="Managers\" />
-    <Folder Include="Queries\" />
     <Folder Include="Commands\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.1.0" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.1.2" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>

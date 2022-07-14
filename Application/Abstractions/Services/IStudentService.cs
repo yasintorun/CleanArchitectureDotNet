@@ -6,6 +6,6 @@ namespace CleanArchitecture.Application.Abstractions.Services
 {
     public interface IStudentService : IBaseService
     {
-        Task<List<Student>> GetStudentsAsync(Expression<Func<Student, bool>>? predicate);
+        Task<List<Student>> GetStudentsAsync(Expression<Func<Student, bool>>? predicate = null);
     }
 }

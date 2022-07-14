@@ -1,11 +1,13 @@
 ﻿using Application.Abstractions.Repositories;
 using Application.Services;
 using CleanArchitecture.Application.Abstractions.Services;
+using CleanArchitecture.Application.Queries;
 using CleanArchitecture.Domain.Validations;
 using CleanArchitecture.Infrastructure.Database.EFCore.Contexts;
 using CleanArchitecture.Infrastructure.Database.EFCore.Repositories;
 using CleanArhitecture.Api.Filters;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
@@ -56,6 +58,7 @@ namespace CleanArhitecture.Api.Configs
 
 
             //Mediatr
+            services.AddMediatR(typeof(GetStudentsQuery).Assembly);
         }
 
         private static void AddSwagger(this IServiceCollection services)

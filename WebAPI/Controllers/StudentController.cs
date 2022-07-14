@@ -2,6 +2,9 @@
 using CleanArchitecture.Api.Response;
 using Microsoft.AspNetCore.Mvc;
 using CleanArchitecture.Application.Abstractions.Services;
+using MediatR;
+using CleanArchitecture.Application.Queries;
+using CleanArchitecture.Api.Responses;
 
 namespace WebAPI.Controllers
 {
@@ -11,11 +14,13 @@ namespace WebAPI.Controllers
     {
         private readonly ILogger<StudentController> _logger;
         private readonly IStudentService _studentService;
+        private readonly IMediator _mediator;
 
-        public StudentController(ILogger<StudentController> logger, IStudentService studentService)
+        public StudentController(ILogger<StudentController> logger, IStudentService studentService, IMediator mediator)
         {
             _logger = logger;
             _studentService = studentService;
+            _mediator = mediator;
         }
 
         [Produces("application/json")]
@@ -31,10 +36,17 @@ namespace WebAPI.Controllers
         [Consumes("application/json")]
         [HttpGet("")]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetStudentsResponse))]
         public async Task<IActionResult> GetStudents()
         {
-            var students = await _studentService.GetStudentsAsync(null);
-            return Ok(students);
+            _logger.LogInformation($"GetStudents controller process started");
+
+            var result = await _mediator.Send(new GetStudentsQuery());
+
+            var response = result.ConvertAll(x => GetStudentsResponse.From(x));
+
+            _logger.LogInformation($"GetStudents controller process finished response: {response}");
+            return Ok(response);
         }
 
     }
