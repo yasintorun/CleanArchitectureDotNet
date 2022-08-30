@@ -4,6 +4,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.RegisterServices(builder.Configuration);
 
+builder.Logging.ConfigureLogging();
+
 var app = builder.Build();
 
 app.ApplyConfiguration();
