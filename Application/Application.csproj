@@ -7,16 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Tools\**" />
-    <EmbeddedResource Remove="Tools\**" />
-    <None Remove="Tools\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Folder Include="Exceptions\" />
     <Folder Include="Constants\" />
     <Folder Include="Managers\" />
-    <Folder Include="Commands\" />
   </ItemGroup>
 
   <ItemGroup>
