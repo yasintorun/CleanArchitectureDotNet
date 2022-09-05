@@ -5,7 +5,7 @@ using LMS.Infrastructure.Database.EntityFramework.Contexts;
 
 namespace LMS.Infrastructure.Database.EntityFramework.Repositories
 {
-    public class StudentRepository : EfRepository<Student, LMSContext>, IStudentRepository
+    internal class StudentRepository : EfRepository<Student, LMSContext>, IStudentRepository
     {
         public StudentRepository(LMSContext context) : base(context)
         {

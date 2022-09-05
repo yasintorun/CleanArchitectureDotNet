@@ -6,17 +6,12 @@ public static class ServiceConfigurations
 {
     public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddInfrastructure(configuration);
         services.AddControllers();
-        services.AddDependencies();
         services.AddMemoryCache();
         services.AddHealthChecks();
         services.AddCors();
         services.AddSwagger();
-    }
-
-    private static void AddDependencies(this IServiceCollection services)
-    {
-        services.AddInfrastructureDependencies();
     }
 
     private static void AddCors(this IServiceCollection services)
