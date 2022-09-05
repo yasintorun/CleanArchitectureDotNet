@@ -1,6 +1,6 @@
 ﻿using Microsoft.OpenApi.Models;
 
-namespace Kod.WebAPI.Configs;
+namespace LMS.WebAPI.Configs;
 public static class ServiceConfigurations
 {
     public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)

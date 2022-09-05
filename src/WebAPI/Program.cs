@@ -1,4 +1,4 @@
-using Kod.WebAPI.Configs;
+using LMS.WebAPI.Configs;
 
 var builder = WebApplication.CreateBuilder(args);
 

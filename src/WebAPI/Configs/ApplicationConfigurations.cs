@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Rewrite;
 
-namespace Kod.WebAPI.Configs;
+namespace LMS.WebAPI.Configs;
 public static class ApplicationConfigurations
 {
     public static void ApplyConfiguration(this IApplicationBuilder builder)

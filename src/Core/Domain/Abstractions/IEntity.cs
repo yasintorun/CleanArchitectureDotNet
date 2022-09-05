@@ -1,4 +1,4 @@
-﻿namespace Kod.Core.Domain.Abstractions
+﻿namespace LMS.Core.Domain.Abstractions
 {
     public interface IEntity
     {

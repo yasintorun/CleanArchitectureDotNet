@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
-namespace Kod.Core.Behaviours;
+namespace LMS.Core.Behaviours;
 public class LoggingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
 { 
     private readonly ILogger<TRequest> _logger;

@@ -2,7 +2,7 @@
 using Serilog.Formatting.Elasticsearch;
 using Serilog.Sinks.Elasticsearch;
 
-namespace Kod.WebAPI.Configs;
+namespace LMS.WebAPI.Configs;
 public static class LoggingConfiguration
 {
     public static void ConfigureLogging(this ILoggingBuilder builder)

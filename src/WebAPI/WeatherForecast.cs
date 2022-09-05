@@ -1,4 +1,4 @@
-namespace WebAPI
+namespace LMS.WebAPI
 {
     public class WeatherForecast
     {
