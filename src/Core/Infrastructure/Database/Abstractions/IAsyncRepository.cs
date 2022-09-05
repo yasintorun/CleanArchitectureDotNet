@@ -4,7 +4,7 @@ namespace LMS.Core.Infrastructure.Database.Abstractions
 {
     public interface IAsyncRepository<T>
     {
-        Task<IEnumerable<T>> GetListAysnc(Expression<Func<T, bool>>? predicate);
+        Task<IEnumerable<T>> GetListAysnc(Expression<Func<T, bool>>? predicate=null);
         Task<T?> GetAsync(Expression<Func<T, bool>> predicate);
         Task<T> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);

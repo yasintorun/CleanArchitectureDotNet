@@ -1,12 +1,13 @@
 ﻿using Microsoft.OpenApi.Models;
 using LMS.Infrastructure;
-
+using LMS.Application;
 namespace LMS.WebAPI.Configs;
 public static class ServiceConfigurations
 {
     public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddInfrastructure(configuration);
+        services.AddApplication();
         services.AddControllers();
         services.AddMemoryCache();
         services.AddHealthChecks();
