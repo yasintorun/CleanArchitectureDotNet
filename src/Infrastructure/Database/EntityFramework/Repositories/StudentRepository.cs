@@ -1,13 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LMS.Application.Abstractions.Repositories;
+using LMS.Core.Infrastructure.Database.EntityFramework;
+using LMS.Domain.Models;
+using LMS.Infrastructure.Database.EntityFramework.Contexts;
 
-namespace Infrastructure.Database.EntityFramework.Repositories
+namespace LMS.Infrastructure.Database.EntityFramework.Repositories
 {
-    public class StudentRepository
+    public class StudentRepository : EfRepository<Student, LMSContext>, IStudentRepository
     {
-
+        public StudentRepository(LMSContext context) : base(context)
+        {
+        }
     }
 }

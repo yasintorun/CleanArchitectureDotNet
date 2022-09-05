@@ -1,4 +1,5 @@
 ﻿using Microsoft.OpenApi.Models;
+using LMS.Infrastructure;
 
 namespace LMS.WebAPI.Configs;
 public static class ServiceConfigurations
@@ -6,10 +7,16 @@ public static class ServiceConfigurations
     public static void RegisterServices(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddControllers();
+        services.AddDependencies();
         services.AddMemoryCache();
         services.AddHealthChecks();
         services.AddCors();
         services.AddSwagger();
+    }
+
+    private static void AddDependencies(this IServiceCollection services)
+    {
+        services.AddInfrastructureDependencies();
     }
 
     private static void AddCors(this IServiceCollection services)
@@ -28,7 +35,7 @@ public static class ServiceConfigurations
         services.AddEndpointsApiExplorer();
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "KodChallenge Web API Document", Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "LMS Web API Document", Version = "v1" });
         });
     }
 }
