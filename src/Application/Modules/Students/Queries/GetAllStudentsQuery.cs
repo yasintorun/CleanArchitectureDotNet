@@ -7,7 +7,7 @@ namespace LMS.Application.Modules.Students.Queries
 {
     public record GetAllStudentsQuery : IRequest<List<GetAllStudentsQueryResponse>>;
 
-    public record GetAllStudentsQueryResponse(int Id, int Identity, string FirstName, string LastName);
+    public record GetAllStudentsQueryResponse(int Id, string FirstName, string LastName, string Identity);
 
     public record GetAllStudentsQueryHandler : IRequestHandler<GetAllStudentsQuery, List<GetAllStudentsQueryResponse>>
     {
