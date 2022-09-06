@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Modules\Students\Commands\" />
     <Folder Include="Modules\Students\Events\" />
   </ItemGroup>
 

@@ -1,4 +1,5 @@
 ﻿using LMS.Application.Abstractions.Repositories;
+using LMS.Application.Modules.Students.Commands;
 using LMS.Application.Modules.Students.Queries;
 using LMS.Domain.Models;
 using MediatR;
@@ -28,9 +29,10 @@ namespace LMS.WebAPI.Controllers
 
 
         [HttpPost("")]
-        public IActionResult AddStudents(Student student)
+        public async Task<IActionResult> AddStudents(Student student)
         {
-            var addedStudent = _studentRepository.Add(student);
+            //var addedStudent = _studentRepository.Add(student);
+            var addedStudent = await Mediator.Send(new AddStudentCommand(student.FirstName, student.LastName, student.Identity));
             return Ok(addedStudent);
         }
     }
