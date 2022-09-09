@@ -24,7 +24,7 @@ namespace LMS.WebAPI.Controllers
         {
             //var list = _studentRepository.GetList();
             var students = await Mediator.Send(new GetAllStudentsQuery());
-            return Ok(students);
+            return Ok(students, "listed");
         }
 
 
@@ -33,7 +33,7 @@ namespace LMS.WebAPI.Controllers
         {
             //var addedStudent = _studentRepository.Add(student);
             var addedStudent = await Mediator.Send(new AddStudentCommand(student.FirstName, student.LastName, student.Identity));
-            return Ok(addedStudent);
+            return Ok(addedStudent, "added");
         }
     }
 }
