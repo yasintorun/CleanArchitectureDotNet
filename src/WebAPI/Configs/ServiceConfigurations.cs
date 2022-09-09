@@ -1,6 +1,8 @@
 ﻿using Microsoft.OpenApi.Models;
 using LMS.Infrastructure;
 using LMS.Application;
+using LMS.Core;
+
 namespace LMS.WebAPI.Configs;
 public static class ServiceConfigurations
 {
@@ -13,6 +15,7 @@ public static class ServiceConfigurations
         services.AddHealthChecks();
         services.AddCors();
         services.AddSwagger();
+        services.AddCore();
     }
 
     private static void AddCors(this IServiceCollection services)

@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Rewrite;
-
+using LMS.Core;
 namespace LMS.WebAPI.Configs;
 public static class ApplicationConfigurations
 {
@@ -7,6 +7,7 @@ public static class ApplicationConfigurations
     {
         builder.UseAuthentication();
         //builder.UseAuthorization();
+        builder.ConfigureExceptionMiddleware();
         builder.UseRouting();
         builder.UseSwagger();
         builder.UseSwaggerUI();
