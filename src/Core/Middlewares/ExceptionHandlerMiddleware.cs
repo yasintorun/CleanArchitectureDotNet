@@ -30,6 +30,10 @@ public class ExceptionHandlerMiddleware
         {
             result = CreateErrorResponse(context, (int) HttpStatusCode.UnprocessableEntity, ex.Message, ex.Failures);
         }
+        catch (InternalException ex)
+        {
+            result = CreateErrorResponse(context, (int)HttpStatusCode.InternalServerError, ex.Message, ex.Details);
+        }
         catch (Exception ex)
         {
             result = CreateErrorResponse(context, (int)HttpStatusCode.InternalServerError, "error.occured", ex.Message);

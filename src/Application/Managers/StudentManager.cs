@@ -25,7 +25,7 @@ namespace LMS.Application.Managers
             var isExistsIdentity = await _studentRepository.GetAsync(x => x.Identity == student.Identity);
             if(isExistsIdentity != null)
             {
-                throw new Exception("dublicatedIdentity");
+                throw new InternalException("dublicatedIdentity");
             }
 
             var addedStudent = await _studentRepository.AddAsync(student);
