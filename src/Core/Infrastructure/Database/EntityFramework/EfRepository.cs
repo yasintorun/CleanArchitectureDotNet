@@ -1,8 +1,10 @@
-﻿using LMS.Core.Domain.Models;
+﻿using LMS.Core.Domain.Abstractions;
+using LMS.Core.Domain.Models;
 using LMS.Core.Infrastructure.Database.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Linq.Expressions;
+using LMS.Core.Extensions;
 
 namespace LMS.Core.Infrastructure.Database.EntityFramework
 {
@@ -15,13 +17,13 @@ namespace LMS.Core.Infrastructure.Database.EntityFramework
             _context = context;
         }
 
-        public IEnumerable<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate)
+        public IList<TEntity> GetList(Expression<Func<TEntity, bool>>? predicate)
         {
             var list = _context.Set<TEntity>();
-            return predicate == null ? list : list.Where(predicate);
+            return predicate == null ? list.ToList() : list.Where(predicate).ToList();
         }
 
-        public async Task<IEnumerable<TEntity>> GetListAysnc(Expression<Func<TEntity, bool>>? predicate)
+        public async Task<IList<TEntity>> GetListAysnc(Expression<Func<TEntity, bool>>? predicate)
         {
             var list = _context.Set<TEntity>().AsNoTracking();
             return await (predicate == null ? list.ToListAsync() : list.Where(predicate).ToListAsync());
@@ -74,6 +76,24 @@ namespace LMS.Core.Infrastructure.Database.EntityFramework
         {
             _context.Entry(entity).State = EntityState.Deleted;
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<Paginate<TEntity>> GetListWithPaginateAsync(Expression<Func<TEntity, bool>>? predicate, IPaginateRequest paginateRequest, Func<TEntity, object>? orderBy = null)
+        {
+            var list = _context.Set<TEntity>().AsNoTracking();
+            var filteredList = predicate == null ? list : list.Where(predicate);
+            var orderedList = await ( orderBy == null ? filteredList : filteredList.OrderBy(orderBy).AsQueryable()).ToListAsync();
+
+            return orderedList.ToPaginate(paginateRequest.PageNum, paginateRequest.PageSize);
+        }
+
+        public Paginate<TEntity> GetListWithPaginate(Expression<Func<TEntity, bool>>? predicate, IPaginateRequest paginateRequest, Func<TEntity, object>? orderBy = null)
+        {
+            var list = _context.Set<TEntity>();
+            var filteredList = predicate == null ? list : list.Where(predicate);
+            var orderedList = orderBy == null ? filteredList.ToList() : filteredList.OrderBy(orderBy).ToList();
+
+            return orderedList.ToPaginate(paginateRequest.PageNum, paginateRequest.PageSize);
         }
     }
 }
