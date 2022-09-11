@@ -1,9 +1,5 @@
-﻿using LMS.Application.Abstractions.Repositories;
-using LMS.Application.Modules.Students.Commands;
-using LMS.Application.Modules.Students.Queries;
-using LMS.Domain.Models;
-using MediatR;
-using Microsoft.AspNetCore.Http;
+﻿using LMS.Application.Modules.Students.Queries;
+using LMS.WebAPI.Requests.Student;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LMS.WebAPI.Controllers
@@ -11,12 +7,10 @@ namespace LMS.WebAPI.Controllers
     public class StudentController : ApiControllerBase
     {
         private readonly ILogger _logger;
-        private readonly IStudentRepository _studentRepository;
 
-        public StudentController(ILogger<StudentController> logger, IStudentRepository studentRepository)
+        public StudentController(ILogger<StudentController> logger)
         {
             _logger = logger;
-            _studentRepository = studentRepository;
         }
 
         [HttpGet("")]
@@ -29,10 +23,10 @@ namespace LMS.WebAPI.Controllers
 
 
         [HttpPost("")]
-        public async Task<IActionResult> AddStudents(Student student)
+        public async Task<IActionResult> AddStudents(AddStudentRequest student)
         {
             //var addedStudent = _studentRepository.Add(student);
-            var addedStudent = await Mediator.Send(new AddStudentCommand(student.FirstName, student.LastName, student.Identity));
+            var addedStudent = await Mediator.Send(student.ToCommand());
             return Ok(addedStudent, "added");
         }
     }

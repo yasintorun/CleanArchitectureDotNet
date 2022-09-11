@@ -35,6 +35,7 @@ public class ExceptionHandlerMiddleware
             result = CreateErrorResponse(context, (int)HttpStatusCode.InternalServerError, "error.occured", ex.Message);
         }
 
+        context.Response.ContentType = "application/json";
         await context.Response.WriteAsync(result);
     }
 

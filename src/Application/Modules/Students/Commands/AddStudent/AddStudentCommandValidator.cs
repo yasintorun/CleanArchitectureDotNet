@@ -12,7 +12,6 @@ namespace LMS.Application.Modules.Students.Validators
             RuleFor(s => s.Identity).NotEmpty().WithMessage(Messages.NotEmpty);
             RuleFor(s => s.Identity).NotNull().WithMessage(Messages.NotNull);
             RuleFor(s => s.Identity).Length(11, 11).WithMessage(Messages.IdentityLengthMust11);
-            RuleFor(s => s.Identity).Length(11, 11).WithMessage(Messages.IdentityLengthMust11);
 
             RuleFor(s => s.FirstName).NotEmpty().WithMessage(Messages.NotEmpty);
             RuleFor(s => s.FirstName).NotNull().WithMessage(Messages.NotNull);
